@@ -15,11 +15,17 @@
 
 import Ice, sys, os
 
+# The "murmur" package provides the Murmur ice bindings. See the header
+# comment for information on setting the Slice file path.
 from murmur import Murmur
 from murmur.json.authenticator import ServerAuthenticatorI
 
 def add_authenticator(server, adapter):
 	authenticator = ServerAuthenticatorI(server, adapter)
+
+	# This is one of the configuration possibilites, setting a base URL for
+	# your authentication server. This might as well be HTTPS, include an
+	# initial path, ... as long as it speaks HTTP and is supported by urllib2.
 	authenticator.base_uri = 'http://localhost:10000/'
 
 	server_authenticator = Murmur.ServerAuthenticatorPrx.uncheckedCast(adapter.addWithUUID(authenticator))

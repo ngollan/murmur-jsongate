@@ -1,0 +1,19 @@
+h1. Murmur Ice-to-JSON gateway
+
+Provides a basic framework to translate Murmur's Ice callbacks to requests to
+a web service to facilitate authentication.
+
+h2. Basic Use
+
+See the supplied jsongate.py script for basic usage information.
+
+The "murmur" module provides a "Murmur" module created by Ice. By default,
+the Slice file is loaded from /usr/share/slice/ice; to provide a different
+Slice file, set the environment variable MURMUR_SLICE_PATH.
+
+h2. Authenticator
+
+The authenticator has three basic settings:
+* base_uri (default: http://localhost:9000/): Base URI for the authentication server. You can set any value, as long as it is supported by urllib2 and allows appending a relative path fragment.
+* known_user_info: Allowed user information types (defaults to values allowed in Mumble 1.2.2)
+* auth_api_token _(yet unused)_: API token to send to the authentication server.
