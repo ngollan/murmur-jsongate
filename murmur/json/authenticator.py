@@ -81,9 +81,7 @@ class ServerAuthenticatorI(Murmur.ServerAuthenticator):
 			newname = user_info['newname']
 
 		if 'groups' in user_info and isinstance(user_info['groups'], list):
-			for g in user_info['groups']:
-				if isinstance(g, str):
-					groups.append(g)
+			groups = filter(lambda g: isinstance(g, str), user_info['groups'])
 
 		return (user_info['id'], newname, groups)
 
